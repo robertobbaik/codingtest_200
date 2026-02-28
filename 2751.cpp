@@ -1,5 +1,5 @@
-// BOJ #2750 - 수 정렬하기
-// https://www.acmicpc.net/problem/2750
+// BOJ #2751 - 수 정렬하기 2
+// https://www.acmicpc.net/problem/2751
 #include <iostream>
 #include <algorithm>
 using namespace std;
@@ -13,14 +13,14 @@ int main()
     cin >> N;
 
     vector<int> arr(N);
-    for(int i = 0; i < N; i++)
+    for (int i = 0; i < N; i++)
     {
         cin >> arr[i];
     }
 
     sort(arr.begin(), arr.end());
 
-    for(int n : arr)
+    for (int n : arr)
     {
         cout << n << '\n';
     }
