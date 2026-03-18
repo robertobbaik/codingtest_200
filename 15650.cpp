@@ -2,25 +2,27 @@
 // https://www.acmicpc.net/problem/15650
 #include <iostream>
 #include <vector>
-
 using namespace std;
 
-void backtracking(vector<int>& arr, int depth, int start, int N, int M)
+// TODO
+
+// 중복없이, 오름차순
+
+void backtracking(int N, int M, vector<int> &arr, int start, int depth)
 {
-    if(depth == M)
+    if (depth == M)
     {
-        for(int i = 0; i < M; i++)
+        for (int i = 0; i < M; i++)
         {
-            cout << arr[i] << ' ';
+            cout << arr[i] << " \n"[i == M - 1];
         }
-        cout << '\n';
         return;
     }
 
-    for(int i = start; i <= N; i++)
+    for (int i = start; i <= N; i++)
     {
         arr[depth] = i;
-        backtracking(arr, depth + 1, i + 1, N, M);
+        backtracking(N, M, arr, i + 1, depth + 1);
     }
 }
 
@@ -30,11 +32,14 @@ int main()
     cin.tie(NULL);
 
     int N, M;
-
     cin >> N >> M;
 
-    vector<int> arr(M);
+    // TODO
+    vector<int> arr(8, 0);
+    backtracking(N, M, arr, 1, 0);
 
-    backtracking(arr, 0, 1, N, M);
     return 0;
 }
+
+// [코드 평가]
+// 정확한 풀이. start로 오름차순 강제, i+1을 넘겨 중복 제거, 초기 start=1 모두 올바름

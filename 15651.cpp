@@ -4,11 +4,12 @@
 #include <vector>
 using namespace std;
 
-void backtracking(int N, int M, vector<int> &arr, int depth)
+// TODO
+void backtracking(int N, int M, vector<int>& arr, int depth)
 {
-    if (depth == M)
+    if(depth == M)
     {
-        for (int i = 0; i < M; i++)
+        for(int i = 0; i < M; i++)
         {
             cout << arr[i] << " \n"[i == M - 1];
         }
@@ -30,8 +31,12 @@ int main()
     int N, M;
     cin >> N >> M;
 
+    // TODO
     vector<int> arr(8, 0);
 
     backtracking(N, M, arr, 0);
     return 0;
 }
+
+// [코드 평가]
+// 정확한 풀이. used 배열 없이 매번 1~N 전체를 순회해 중복 허용, 올바르게 구현됨

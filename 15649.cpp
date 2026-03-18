@@ -5,15 +5,16 @@
 
 using namespace std;
 
-void backtracking(vector<int>& arr, vector<bool>& used, int depth, int N, int M)
+// TODO
+// 중복없이 수열 상관없음
+void backtracking(int N, int M, vector<int> &arr, vector<bool> &used, int depth)
 {
-    if(depth == M)
+    if (M == depth)
     {
-        for(int i = 0; i < M; i++)
+        for (int i = 0; i < M; i++)
         {
-            cout << arr[i] << ' ';
+            cout << arr[i] << " \n"[i == M - 1];
         }
-        cout << '\n';
         return;
     }
 
@@ -21,9 +22,9 @@ void backtracking(vector<int>& arr, vector<bool>& used, int depth, int N, int M)
     {
         if(!used[i])
         {
-            used[i] = true;
             arr[depth] = i;
-            backtracking(arr, used, depth + 1, N, M);
+            used[i] = true;
+            backtracking(N, M, arr, used, depth + 1);
             used[i] = false;
         }
     }
@@ -37,10 +38,10 @@ int main()
     int N, M;
     cin >> N >> M;
 
-    vector<int> arr(N);
-    vector<bool> used(N + 1, false);
-
-    backtracking(arr, used, 0, N, M);
+    vector<int> arr(8, 0);
+    vector<bool> used(8, false);
+    backtracking(N, M, arr, used, 0);
+    // TODO
 
     return 0;
 }
