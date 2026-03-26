@@ -1,7 +1,8 @@
-// BOJ #11726 - 2×n 타일링
-// https://www.acmicpc.net/problem/11726
+// BOJ #11727 - 2×n 타일링 2
+// https://www.acmicpc.net/problem/11727
 #include <iostream>
 #include <vector>
+
 using namespace std;
 
 int main()
@@ -13,17 +14,13 @@ int main()
     cin >> n;
 
     vector<int> dp(n + 1);
-
-    dp[1] = 1;
     
-    if(n >= 2)
-    {
-        dp[2] = 2;
-    }
+    dp[1] = 1;
+    dp[2] = 3;
 
-    for(int i = 3; i <= n; i++)
+    for(int i = 3; i < n + 1; i++)
     {
-        dp[i] = (dp[i - 2] + dp[i - 1]) % 10007;
+        dp[i] = (dp[i - 1] + 2 * dp[i - 2]) % 10007;
     }
 
     cout << dp[n] << endl;
