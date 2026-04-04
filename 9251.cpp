@@ -15,13 +15,13 @@ int main()
 
     cin >> A >> B;
 
-    vector<vector<int>> dp(A.size(), vector<int>(B.size(), 0));
+    vector<vector<int>> dp(A.size() + 1, vector<int>(B.size() + 1, 0));
 
-    for (int i = 1; i < A.size(); i++)
+    for (int i = 1; i <= A.size(); i++)
     {
-        for (int j = 1; j < B.size(); j++)
+        for (int j = 1; j <= B.size(); j++)
         {
-            if (A[i] == B[j])
+            if (A[i - 1] == B[j - 1])
             {
                 dp[i][j] = dp[i - 1][j - 1] + 1;
             }
@@ -32,7 +32,7 @@ int main()
         }
     }
 
-    cout << dp[A.size() - 1][B.size() - 1] << endl;
+    cout << dp[A.size()][B.size()] << endl;
 
     return 0;
 }
