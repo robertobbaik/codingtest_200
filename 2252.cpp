@@ -16,6 +16,7 @@ int main()
 
     cin >> N >> M;
 
+    vector<vector<int>> graph(N + 1);
     vector<int> indegree(N + 1, 0);
 
     for(int i = 0; i < M; i++)
@@ -23,8 +24,39 @@ int main()
         int A, B;
         cin >> A >> B;
 
-        
+        graph[A].push_back(B);
+
+        indegree[B]++;
     }
+
+    queue<int> q;
+
+    for(int i = 1; i < N + 1; i++)
+    {
+        if(indegree[i] == 0)
+        {
+            q.push(i);
+        }
+    }
+
+    while(!q.empty())
+    {
+        int num = q.front();
+        q.pop();
+
+        cout << num << ' ';
+
+        for(int n : graph[num])
+        {
+            indegree[n]--;
+            if(indegree[n] == 0)
+            {
+                q.push(n);
+            }
+        }
+    }
+
+    cout << '\n';
 
     return 0;
 }
